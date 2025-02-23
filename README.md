@@ -35,3 +35,11 @@ npx tsc --init
 }
 ```
 
+## Padrão de Commits
+Utilize o comando:
+```bash
+npm run commit
+```
+
+Seguindo o padrão Conventional Commits
+
