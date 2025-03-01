@@ -6,6 +6,8 @@
 - **TypeScript**
 - **Fastify**
 - **ESLint**
+- **SQLite**
+- **Knex.js**
 
 ## Configuração do TypeScript
 Para fazer com que o Node.js entenda TypeScript:
@@ -64,6 +66,38 @@ O ESLint padroniza o desenvolvimento, tornando-o mais organizado.
    }
    ```
 
+## Configurando o Knex.js
+O Knex.js é um SQL Query builder
+
+1. Instalação
+
+```bash
+npm i knex sqlite3
+```
+2. Exportar configuração de `src/database.ts`:
+
+```typescript
+export const config = {
+  client: 'sqlite3',
+  connection: {
+    filename: './tmp/app.db',
+  },
+  useNullAsDefault: true,
+}
+```
+
+3. Importar configuração nonovo arquivo `knexfile.ts`:
+
+```typescript
+import { config } from './src/database'
+
+export default config
+```
+
+4. Criar o arquivo de Migration:
+```bash
+npx knex migrate:make create-documents
+```
 ## Executando a Aplicação
 Para executar a aplicação, utilize o seguinte comando:
 ```bash

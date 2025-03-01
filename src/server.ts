@@ -1,23 +1,13 @@
 import fastify from 'fastify'
+import { knex } from './database'
 
 const app = fastify()
 
 // GET, POST, PUT, PATCH, DELETE
 
 app.get('/hello', async () => {
-  return await webhook
-    .then((message: unknown) => {
-      return message + ' - ' + new Date().toISOString()
-    })
-    .catch((error: unknown) => {
-      return error
-    })
-})
-
-const webhook = new Promise((resolve) => {
-  setTimeout(() => {
-    resolve('Webhook recebido com sucesso!')
-  }, 1000)
+  const test = await knex('sqlite_schema').select('*')
+  return test
 })
 
 app
@@ -26,4 +16,7 @@ app
   })
   .then(() => {
     console.log('Server currently active.')
+  })
+  .catch((err) => {
+    console.log('Error on server start:', err)
   })
