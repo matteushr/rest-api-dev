@@ -1,28 +1,28 @@
-# API Node.js
+# Node.js API
 
-**Objetivo:** Implementar uma API básica do tipo REST com o objetivo de estudo do curso de Node.js da Rocketseat.
+**Objective:** Implement a basic REST API for educational purposes as part of the Rocketseat Node.js course.
 
-## Tecnologias
+## Technologies
 - **TypeScript**
 - **Fastify**
 - **ESLint**
 - **SQLite**
 - **Knex.js**
 
-## Configuração do TypeScript
-Para fazer com que o Node.js entenda TypeScript:
+## TypeScript Configuration
+To make Node.js understand TypeScript:
 
-1. **Instale o TypeScript junto do pacote de tipos como dependência de desenvolvimento (D):**
+1. **Install TypeScript and type definitions as development dependencies (D):**
    ```bash
    npm install typescript @types/node ts-node -D
    ```
 
-2. **Crie o arquivo de configuração do TypeScript:**
+2. **Create the TypeScript configuration file:**
    ```bash
    npx tsc --init
    ```
 
-3. **No `tsconfig.json`, configure:**
+3. **In `tsconfig.json`, configure:**
    ```json
    {
      "compilerOptions": {
@@ -32,15 +32,15 @@ Para fazer com que o Node.js entenda TypeScript:
    }
    ```
 
-## Configurando o ESLint
-O ESLint padroniza o desenvolvimento, tornando-o mais organizado.
+## Setting Up ESLint
+ESLint standardizes code for organized development.
 
-1. **Instale o ESLint com os padrões da RocketSeat:**
+1. **Install ESLint with Rocketseat's preset:**
    ```bash
    npm i eslint @rocketseat/eslint-config -D
    ```
 
-2. **Crie o arquivo de configuração `.eslintrc.json` e especifique a configuração:**
+2. **Create the `.eslintrc.json` configuration file:**
    ```json
    {
      "extends": [
@@ -49,7 +49,7 @@ O ESLint padroniza o desenvolvimento, tornando-o mais organizado.
    }
    ```
 
-3. **Adicione em `settings.json` para padronizar automaticamente o projeto:**
+3. **Add to `settings.json` for auto-formatting:**
    ```json
    {
      "editor.codeActionsOnSave": {
@@ -59,59 +59,57 @@ O ESLint padroniza o desenvolvimento, tornando-o mais organizado.
    }
    ```
 
-4. **Adicione o script de lint no `package.json` para garantir que o código esteja sempre formatado:**
+4. **Add the lint script to `package.json`:**
    ```json
    {
      "lint": "eslint src --ext .ts --fix"
    }
    ```
 
-## Configurando o Knex.js
-O Knex.js é um SQL Query builder
+## Setting Up Knex.js
+Knex.js is a SQL query builder.
 
-1. Instalação
+1. **Installation:**
+   ```bash
+   npm i knex sqlite3
+   ```
 
-```bash
-npm i knex sqlite3
-```
-2. Exportar configuração de `src/database.ts`:
+2. **Export configuration in `src/database.ts`:**
+   ```typescript
+   export const config = {
+     client: 'sqlite3',
+     connection: {
+       filename: './tmp/app.db',
+     },
+     useNullAsDefault: true,
+   }
+   ```
 
-```typescript
-export const config = {
-  client: 'sqlite3',
-  connection: {
-    filename: './tmp/app.db',
-  },
-  useNullAsDefault: true,
-}
-```
+3. **Import configuration in `knexfile.ts`:**
+   ```typescript
+   import { config } from './src/database'
 
-3. Importar configuração nonovo arquivo `knexfile.ts`:
+   export default config
+   ```
 
-```typescript
-import { config } from './src/database'
+4. **Create a migration file:**
+   ```bash
+   npx knex migrate:make create-documents
+   ```
 
-export default config
-```
-
-4. Criar o arquivo de Migration:
-```bash
-npx knex migrate:make create-documents
-```
-## Executando a Aplicação
-Para executar a aplicação, utilize o seguinte comando:
+## Running the Application
+To start the application:
 ```bash
 npm run dev
 ```
 
-Antes de subir para produção, execute:
-
+Before deploying to production, run:
 ```bash
 npm run lint
 ```
 
+## Notes
+- Ensure all dependencies are installed correctly.
+- Use ESLint to maintain code quality.
 
-## Observações
-- Certifique-se de que todas as dependências estão instaladas corretamente.
-- Utilize o ESLint para manter a qualidade do código.
-
+--- 
