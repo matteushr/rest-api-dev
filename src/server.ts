@@ -5,17 +5,20 @@ const app = fastify()
 
 // GET, POST, PUT, PATCH, DELETE
 
-app.get('/hello', async () => {
-  const test = await knex('sqlite_schema').select('*')
-  return test
+app.get('/users', async () => {
+  const transactions = await knex('transactions')
+    .where('amount', 5000)
+    .select('*')
+
+  return transactions
 })
 
 app
   .listen({
-    port: 3333,
+    port: Number(process.env.PORT),
   })
   .then(() => {
-    console.log('Server currently active.')
+    console.log(`Active: http://localhost:${process.env.PORT}`)
   })
   .catch((err) => {
     console.log('Error on server start:', err)
