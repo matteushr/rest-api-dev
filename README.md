@@ -97,6 +97,24 @@ Knex.js is a SQL query builder.
    npx knex migrate:make create-documents
    ```
 
+## Estrutura do Banco de Dados
+
+A aplicação utiliza uma tabela chamada `transactions` com a seguinte estrutura:
+
+- **id**: UUID, chave primária.
+- **title**: Texto, não nulo.
+- **amount**: Decimal, não nulo.
+- **created_at**: Timestamp, não nulo, padrão para o momento da criação.
+- **session_id**: UUID, índice, adicionado para rastreamento de sessões.
+
+## Configuração do Ambiente
+
+As variáveis de ambiente são gerenciadas usando o pacote `dotenv`. Um arquivo `.env` deve ser criado na raiz do projeto com as seguintes variáveis:
+
+DATABASE_URL=./tmp/app.db
+PORT=3333
+NODE_ENV=development
+
 ## Running the Application
 To start the application:
 ```bash
