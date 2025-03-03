@@ -22,14 +22,15 @@
   "homepage": "https://github.com/matteushr/rest-api-dev#readme",
   "devDependencies": {
     "@rocketseat/eslint-config": "^2.2.2",
-    "@types/node": "^22.13.5",
+    "@types/node": "^22.13.8",
+    "dotenv": "^16.4.7",
     "eslint": "^8.57.1",
     "knex": "^0.95.15",
     "ts-node": "^10.9.2",
-    "typescript": "^5.7.3"
+    "typescript": "^5.8.2"
   },
   "dependencies": {
-    "dotenv": "^16.4.7",
+    "api-node": "file:",
     "fastify": "^5.2.1",
     "sqlite3": "^5.1.7",
     "zod": "^3.24.2"

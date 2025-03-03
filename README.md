@@ -97,6 +97,28 @@ Knex.js is a SQL query builder.
    npx knex migrate:make create-documents
    ```
 
+## Database Migrations
+This project uses Knex.js migrations to manage the database schema:
+
+1. **Create a migration:**
+   ```bash
+   npm run knex migrate:make migration-name
+   ```
+
+2. **Run migrations:**
+   ```bash
+   npm run migrate:latest
+   ```
+
+3. **Rollback migrations:**
+   ```bash
+   npm run knex migrate:rollback
+   ```
+
+Existing migrations:
+- `create-transactions`: Creates the transactions table
+- `add-session-id-to-transactions`: Adds session_id column
+
 ## Estrutura do Banco de Dados
 
 A aplicação utiliza uma tabela chamada `transactions` com a seguinte estrutura:
@@ -129,5 +151,13 @@ npm run lint
 ## Notes
 - Ensure all dependencies are installed correctly.
 - Use ESLint to maintain code quality.
+
+## Project Structure
+- `src/`: Source code
+  - `server.ts`: API server definition
+  - `database.ts`: Database configuration
+  - `env/`: Environment configuration
+- `db/`: Database files
+  - `migrations/`: Database migration scripts
 
 --- 
