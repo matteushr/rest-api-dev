@@ -1,7 +1,7 @@
 # Business Rules
 
-- [ ] Transactions can be income or outcome
-- [ ] Each transaction must have a title, amount, and type (income/outcome)
+- [x] Transactions can be income or outcome
+- [x] Each transaction must have a title, amount, and type (income/outcome)
 - [ ] Each transaction must be associated with a user session
 - [ ] Users should be able to see their transaction history
 - [ ] Users should be able to see their account balance
@@ -10,9 +10,9 @@
 
 - [x] Users must be able to create new transactions
 - [ ] Users should be able to see metrics from their account (balance, spendings, etc.)
-- [ ] Users must be able to list all their transactions
-- [ ] Users must be able to get details of a specific transaction
-- [ ] Users must be able to delete transactions
+- [x] Users must be able to list all their transactions
+- [x] Users must be able to get details of a specific transaction
+- [x] Users must be able to delete transactions
 - [ ] Users must be able to update transaction details
 
 # Non-Functional Requirements

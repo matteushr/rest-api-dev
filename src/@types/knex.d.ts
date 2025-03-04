@@ -1,4 +1,4 @@
-// Arquivo de definição de tipos para o knex
+// eslint-disable-next-line
 import { Knex } from 'Knex'
 
 declare module 'knex/types/tables' {

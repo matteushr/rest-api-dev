@@ -1,12 +1,20 @@
 import fastify from 'fastify'
-import { knex } from './database'
 import { env } from './env'
 import { transactionRoutes } from './routes/transactions'
+import cookie from '@fastify/cookie'
+
 const app = fastify()
 
-// GET, POST, PUT, PATCH, DELETE
+app.addHook('preHandler', async (request) => {
+  console.log(`${request.method} ${request.url}`)
+})
 
-app.register(transactionRoutes)
+app.register(cookie)
+
+// Plug-in
+app.register(transactionRoutes, {
+  prefix: '/transactions',
+})
 
 app
   .listen({
